@@ -1,0 +1,14 @@
+{
+    "data":[
+        {
+            "id": 1,
+            "title" : "Ghostbusters I Aint Afraid",
+            "subtitle" : "Wrap With Travel Lid",
+            "price" : "18.99" ,
+            "img1" : "https://marvel-b1-cdn.bc0a.com/f00000000077703/images.tervis.com/is/image/tervis?layer=0&src=ir(tervisRender/16DWT1-V2?&obj=MAIN/GLARE&show&obj=MAIN/OUTER/SMOOTH/CL1&show&obj=MAIN/INNER/LINED/CL1&show&obj=MAIN/WRA&decal&src=is(tervis/16DWT-V2-WRA-DECO3?&$img-src=1365652)&pos=.6%2C0&show&obj=MAIN/ACCESSORIES/LIDTRV/BL3&show&obj=MAIN&req=object&sharpen=1)$PDP-LG$",
+            "img2" : "https://marvel-b1-cdn.bc0a.com/f00000000077703/images.tervis.com/is/image/tervis?layer=0&src=ir(tervisRender/24DWT1-V2?&obj=MAIN/GLARE&show&obj=MAIN/OUTER/SMOOTH/CL1&show&obj=MAIN/INNER/LINED/CL1&show&obj=MAIN/WRA&decal&src=is(tervis/24DWT-V2-WRA-DECO3?&$img-src=1365653)&pos=0%2C0&show&obj=MAIN/ACCESSORIES/LIDTRV/BL3&show&obj=MAIN&req=object&sharpen=1)$PDP-LG$",
+            "img2" : "https://marvel-b1-cdn.bc0a.com/f00000000077703/images.tervis.com/is/image/tervis/1365653?$PDP-LG$"
+
+        }
+    ]
+}
