@@ -1,0 +1,51 @@
+.onebanner
+{
+    background-color: rgb(255, 175, 189);    
+    color: white;
+    border-top: 1px solid grey;
+    width: 90%;
+    margin-left: 5%; 
+}
+
+.onebanner > h2
+{
+    padding-bottom: 1.5%;
+}
+
+/* .main1
+{
+    display: grid;
+    grid-template-columns: 40% 60%; 
+}
+
+.main1-child1
+{
+    background-color: rgb(223, 236, 239);
+    color: rgb(85, 135, 170);
+    padding: 10%;
+    height: 40%;
+
+}
+
+.line
+{
+    height: 3px;
+    width: 30%;
+    background-color: rgb(85, 135, 170);
+    margin-left: 35%;
+}
+
+/* .main1-child1 > h2
+{
+    margin-top: -1%;
+} */
+
+/*
+.main1-child2
+{
+    height: 60%;
+    border: 2px solid green; 
+    height: 40%;
+}
+
+ */

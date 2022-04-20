@@ -1,0 +1,28 @@
+.navbar
+{    
+    display: flex;
+    width: 50%;
+    gap: 3%;    
+    height: auto;
+    margin: auto;
+    justify-content: space-between;
+    
+}
+/* 
+.mnavbar
+{       
+    border-bottom: 2px solid grey;      
+    
+} */
+
+span
+{
+    font-weight: 400;
+    padding: 0.5%;
+}
+
+span:hover
+{
+    color: green; 
+    font-weight: 500;
+}

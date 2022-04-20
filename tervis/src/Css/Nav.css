@@ -1,0 +1,33 @@
+.mainnav {
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    height: 60px;
+    border-bottom: 2px solid grey;
+}
+
+.cartimg>img {
+    height: 50px;
+    width: auto;
+}
+
+.login
+{
+    width: 30%;   
+    
+}
+
+.search>input {
+    height: 20px;
+    width: 50%;
+    margin-top: 10px;
+}
+
+.logoimg>img {
+    height: 50px;
+    width: auto;
+}
+
+.mainnav>div {
+    height: 100%;
+}
