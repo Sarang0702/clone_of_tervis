@@ -21,8 +21,7 @@ span
     padding: 0.5%;
 }
 
-span:hover
-{
-    color: green; 
+.id01:hover
+{    
     font-weight: 500;
 }

@@ -12,40 +12,49 @@
     padding-bottom: 1.5%;
 }
 
-/* .main1
+.mhproduct
+{
+    margin-left: 11%;
+    width: 80%;
+   display: grid;
+   grid-template-columns: 30% 30% 30%;
+   gap: 2%    ;
+}
+
+.mhproduct1
 {
     display: grid;
-    grid-template-columns: 40% 60%; 
+    grid-template-columns: 50% 40%; 
+    background-color: rgb(233, 225, 225);   
+    border-radius: 10px;    
 }
 
-.main1-child1
+.mhproduct1 > div > img
 {
-    background-color: rgb(223, 236, 239);
-    color: rgb(85, 135, 170);
-    padding: 10%;
-    height: 40%;
-
+    height: 100%;
+    width: 100%;
 }
 
-.line
-{
-    height: 3px;
-    width: 30%;
-    background-color: rgb(85, 135, 170);
-    margin-left: 35%;
+.hpdetails
+{    
+    padding: 70px 0;    
+    text-align: center;
 }
 
-/* .main1-child1 > h2
+.pheading
 {
-    margin-top: -1%;
-} */
-
-/*
-.main1-child2
-{
-    height: 60%;
-    border: 2px solid green; 
-    height: 40%;
+    font-size: larger;
+    font-weight: bolder;        
 }
 
- */
+.pdetails
+{
+    font-size: larger;
+    font-weight: normal;    
+}
+
+.mhproduct1:hover
+{       
+    color:green;
+
+}

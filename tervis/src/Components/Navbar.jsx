@@ -6,12 +6,12 @@ export const Navbar = () =>
     return(
         <div className='mnavbar'>
             <div className='navbar'>
-                <span>Drinkware</span>
-                <span>Collections</span>
-                <span>Fan Shop</span>
-                <span>Customize</span>
-                <span>Bundle & Sets</span>
-                <span>Sustainability</span>
+                <span className='id01'>Drinkware</span>
+                <span className='id01'>Collections</span>
+                <span className='id01'>Fan Shop</span>
+                <span className='id01'>Customize</span>
+                <span className='id01'>Bundle & Sets</span>
+                <span className='id01'>Sustainability</span>
             </div>                        
         </div>
     );
