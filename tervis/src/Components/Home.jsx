@@ -1,9 +1,11 @@
 import React from 'react';
-import '../Css/Home.css'
+import '../Css/Home.css';
+import { Nav } from './Nav';
 
 export const Home = () =>
 {
-    return(<>
+    return(<>             
+        <Nav />        
         <div className='onebanner'>
            <h2> Save More When You Gift More 15% Off 4 | 20% Off 6+</h2>
         </div>        

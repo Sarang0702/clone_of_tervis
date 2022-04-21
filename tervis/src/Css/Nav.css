@@ -4,6 +4,11 @@
     grid-template-columns: auto auto auto auto;
     height: 60px;
     border-bottom: 2px solid grey;
+    
+    overflow: hidden;   
+    position: fixed; 
+    top: 0;
+    width: 100%; 
 }
 
 .cartimg>img {
