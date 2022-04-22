@@ -22,6 +22,8 @@ export const Navbar = () =>
                 <span className='id01' onClick={NavigateProducts}>Bundle & Sets</span>
                 <span className='id01' onClick={NavigateProducts}>Sustainability</span>
             </div>                        
+            <hr />
         </div>
+        
     );
 }

@@ -20,3 +20,19 @@ h1 {
   height: 100px;
   width: auto;
 }
+
+.pnav {
+  display: grid;
+  grid-template-columns: 30% 50% 20%;
+}
+
+.productname
+{
+  text-align: left;
+  margin-left: 10%;
+}
+.sortproducts
+{
+  display: grid;
+  grid-template-columns: auto auto;
+}
