@@ -2,17 +2,38 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Css/Nav.css'
 import { Navbar } from './Navbar';
+import { useEffect, useState } from "react";;
+
 
 
 export const Nav = () =>
 {
     const navigate = useNavigate();
-    
+    const [data,setData] = useState([]);
+         
 
     const NavigateHome = () =>
     {        
         navigate("/");
     } 
+
+
+    // const fetchData = () =>
+    // {
+    // //     fetch('http://localhost:8000/products')
+    // //     .then( (res) => res.json())
+    // //     .then( (res) =>
+    // //     {
+    // //         setData(res);
+    // //     })
+    // //     .catch( (err) => console.log(err))
+    // // }
+    // // useEffect(
+    // //     ()=>
+    // //     {
+    // //         fetchData()
+    // //     },[]
+    // // );
 
     return(
         <>
@@ -27,9 +48,18 @@ export const Nav = () =>
             </div>
             <div className='search' >
                 <input type="text" placeholder="Search" />
+                <br />
+                {/* <div className='dataresult'>
+                    {data.map((value,key) =>
+                    {
+                        <p>
+                            {value.title}
+                        </p>
+                    })}
+                </div> */}
             </div>
             <div className='cartimg'>
-                <img  src="https://www.freeiconspng.com/uploads/shopping-cart-icon-30.png" />                
+                <img onClick={() => navigate("/cart")} src="https://www.freeiconspng.com/uploads/shopping-cart-icon-30.png" />                
             </div>
         </div>
         <Navbar />
