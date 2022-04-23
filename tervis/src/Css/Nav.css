@@ -4,7 +4,8 @@
     grid-template-columns: auto auto auto auto;
     height: 60px;
     border-bottom: 2px solid grey;
-    
+    background-color: white;
+        
     overflow: hidden;   
     position: fixed; 
     top: 0;
