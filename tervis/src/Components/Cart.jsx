@@ -3,33 +3,30 @@ import '../Css/cart.css';
 import { Nav } from "./Nav";
 import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
-import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 export const Cart = () =>
 {   
     const data = JSON.parse(localStorage.getItem("terviscart"))
-    const [value,setValue] = useState({});
-    const [total,setTotal] = useState(0);
+    const [value,setValue] = useState({});    
 
-    const findtotal = () => data.forEach((el) => setTotal(total + el.price))
-    useEffect(()=>
-    {
-        findtotal()
-    },[])
-    // 
-
-    
+    var t = 0;
+    data.forEach((el) => t += el.price)
     console.log(data);
-     console.log(total);
-
-    
     const delcart = (product) =>
     {
-        
         data.splice(data.findIndex(a => a.id === product.id) , 1)        
         localStorage.setItem("terviscart",JSON.stringify(data));     
 
-        setValue({"msg":"refresh page"});
+        setValue({"msg":"just refresh page"});
+    }    
+
+    
+    var mt = 0;
+    if(t != 0)
+    {
+        mt = 35+t
     }
 
     console.log(data);
@@ -70,30 +67,60 @@ export const Cart = () =>
                         <table>
                             <tr>
                                 <td>Subtotal</td>
-                                <td>Rs. 070201</td>
+                                <td>{"Rs. "+t }</td>
                             </tr>
                             <tr>
                                 <td>Tax</td>
-                                <td>Rs. 0702</td>
+                                <td>Rs. 35</td>
                             </tr>
                             <tr>
                                 <td>Total</td>
-                                <td>Rs. 0201</td>
+                                <td>{"Rs. "+mt}</td>
                             </tr>
                         </table>
                 </div>
             </div>
 
             <div>
-
-            </div>            
-
-
-
-        
-
-
-        </div>
+                <h4>Add Your Address To Deliver Product</h4>
+                <Box
+                    component="form"
+                    sx={{
+                    '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                ></Box>
+                <div>
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Full Name : "
+                    multiline
+                    maxRows={4}                
+                />
+                <br /><br />
+                <TextField
+                    id="outlined-multiline-flexible"
+                    label="Email : "
+                    multiline
+                    maxRows={4}                
+                />
+                <br /><br />
+                <TextField
+                    id="outlined-multiline-static"
+                    label="Address : "
+                    multiline
+                    rows={4}
+                />
+                <br /><br />                
+                <strong>Total Amount is {"Rs. "+mt}</strong>      
+                <br /><br />   
+                <Button variant="outlined" >
+                    Checkout
+                </Button>                                        
+            </div>
+        </div>            
+    </div>
         
 
         

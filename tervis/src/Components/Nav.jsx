@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";;
 
 
 
-export const Nav = () =>
+export const Nav = (props) =>
 {
     const navigate = useNavigate();
     const [data,setData] = useState([]);
@@ -18,23 +18,8 @@ export const Nav = () =>
     } 
 
 
-    // const fetchData = () =>
-    // {
-    // //     fetch('http://localhost:8000/products')
-    // //     .then( (res) => res.json())
-    // //     .then( (res) =>
-    // //     {
-    // //         setData(res);
-    // //     })
-    // //     .catch( (err) => console.log(err))
-    // // }
-    // // useEffect(
-    // //     ()=>
-    // //     {
-    // //         fetchData()
-    // //     },[]
-    // // );
 
+    
     return(
         <>
         <div className="mainnav">   
@@ -47,16 +32,9 @@ export const Nav = () =>
                 <img   src="https://www.tervis.com/on/demandware.static/-/Sites/default/dw4eec0c99/images/tervis-logo.svg" />                
             </div>
             <div className='search' >
-                <input type="text" placeholder="Search" />
+                <input type="text" placeholder="Search" onChange={(e) => props.searchd(e.target.value)} />
                 <br />
-                {/* <div className='dataresult'>
-                    {data.map((value,key) =>
-                    {
-                        <p>
-                            {value.title}
-                        </p>
-                    })}
-                </div> */}
+               
             </div>
             <div className='cartimg'>
                 <img onClick={() => navigate("/cart")} src="https://www.freeiconspng.com/uploads/shopping-cart-icon-30.png" />                
