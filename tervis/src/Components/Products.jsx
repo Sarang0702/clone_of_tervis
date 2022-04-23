@@ -31,7 +31,7 @@ export const Products = () =>
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
     const fetchData = () =>
     {
-        fetch('http://localhost:8000/products')
+        fetch('https://srngjson.herokuapp.com/products')
         .then( (res) => res.json())
         .then( (res) =>
         {

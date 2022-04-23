@@ -27,6 +27,7 @@ export const Cart = () =>
     if(t != 0)
     {
         mt = 35+t
+        mt = mt.toFixed(2)
     }
 
     console.log(data);
