@@ -5,11 +5,13 @@ import Button from '@mui/material/Button';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { useNavigate } from 'react-router-dom';
 
 export const Cart = () =>
 {   
     const data = JSON.parse(localStorage.getItem("terviscart"))
     const [value,setValue] = useState({});    
+    const navigate = useNavigate();
 
     var t = 0;
     data.forEach((el) => t += el.price)
@@ -116,7 +118,7 @@ export const Cart = () =>
                 <br /><br />                
                 <strong>Total Amount is {"Rs. "+mt}</strong>      
                 <br /><br />   
-                <Button variant="outlined" >
+                <Button variant="outlined" onClick={() => navigate("/payment")}>
                     Checkout
                 </Button>                                        
             </div>

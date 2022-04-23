@@ -4,8 +4,8 @@ import '../Css/Footer.css';
 export const Footer = () => {
   return (
      <>
-     <div className='footer'>
-   
+     
+     <div className='footer'>   <hr />
   <div className='footer-content'>
       <div>
           <h3>Shopper Central</h3>

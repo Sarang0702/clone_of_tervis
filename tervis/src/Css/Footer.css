@@ -23,6 +23,5 @@
 
 .footer-content>div>p:hover{
     color: rgb(8, 94, 255);
-    background-color: white;
     cursor: pointer;
 }
