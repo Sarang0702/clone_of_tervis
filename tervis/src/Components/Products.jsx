@@ -16,7 +16,7 @@ export const Products = () =>
     const [drop,setDrop] = useState('All Products');    
     const [sortdataname,setSortdataname] = useState("Featured");    
     const [sdata,setSdata] = useState([]);
-    const [cart,setCart] = useState({});
+    const [count,setCount] = useState(0);
     const navigate = useNavigate();    
     
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
@@ -92,11 +92,13 @@ export const Products = () =>
     
     const addcart = (product) =>
     {   
-        var cartdata = JSON.parse(localStorage.getItem("terviscart") || "[]");
-        cartdata.push(product);
-        localStorage.setItem("terviscart",JSON.stringify(cartdata));
+        var cartdata = JSON.parse(localStorage.getItem("terviscart") || "[]");        
+            cartdata.push(product);
+            localStorage.setItem("terviscart",JSON.stringify(cartdata));
+        
+        
 
-        navigate("/cart");
+        // navigate("/cart");
     }
     
 

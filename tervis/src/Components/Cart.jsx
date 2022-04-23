@@ -9,7 +9,18 @@ export const Cart = () =>
 {   
     const data = JSON.parse(localStorage.getItem("terviscart"))
     const [value,setValue] = useState({});
+    const [total,setTotal] = useState(0);
+
+    const findtotal = () => data.forEach((el) => setTotal(total + el.price))
+    useEffect(()=>
+    {
+        findtotal()
+    },[])
+    // 
+
+    
     console.log(data);
+     console.log(total);
 
     
     const delcart = (product) =>
@@ -26,17 +37,66 @@ export const Cart = () =>
     return(
     <>
         <Nav />
-        <div className='item-container'>
-            {data.map((product) => (
-            <div className='card'>
-                <img src={product.image} alt='' />
-                <h3>{product.title}</h3>
-                <p><strong>{"Rs  " + product.price}</strong></p>
-                <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => delcart(product)} >
-                    Delete
-                </Button>
-            </div>          
-            ))}
+       
+        <div className='maincart'>     
+            <div className='small-container'>
+                <table>
+                    <tr>
+                        <th className='cartheading'>Product</th>
+                        <th className='cartheading'>Quantity</th>
+                        <th className='cartheading'>Subtotal</th>
+                    </tr>
+                    {data.map((product) => (        
+                        <tr>
+                            <td>
+                                <div className="cart-info">
+                                    <img src={product.image} />
+                                    <div>
+                                        <p>{product.title}</p>                                        
+                                        <br />
+                                        <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => delcart(product)} >
+                                            Delete
+                                        </Button>                                        
+                                    </div>
+                                </div>
+                                <hr />
+                            </td>
+                            <td><input type={"text"} value={"1"} /> </td>
+                            <td>{"Rs."+product.price}</td>
+                        </tr>
+                    ))}
+                </table>
+                <div className='total-price'>
+                        <table>
+                            <tr>
+                                <td>Subtotal</td>
+                                <td>Rs. 070201</td>
+                            </tr>
+                            <tr>
+                                <td>Tax</td>
+                                <td>Rs. 0702</td>
+                            </tr>
+                            <tr>
+                                <td>Total</td>
+                                <td>Rs. 0201</td>
+                            </tr>
+                        </table>
+                </div>
+            </div>
+
+            <div>
+
+            </div>            
+
+
+
+        
+
+
         </div>
+        
+
+        
+
     </>)
 }
