@@ -2,7 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Css/Nav.css'
 import { Navbar } from './Navbar';
-import { useEffect, useState } from "react";;
+import { useEffect, useState } from "react";
+import LoginIcon from '@mui/icons-material/Login';
 
 
 
@@ -23,9 +24,10 @@ export const Nav = (props) =>
     return(
         <>
         <div className="mainnav">   
-            <div >
-                <span className='login'>
-                    
+            <div >         
+                <span className='loginicon'>
+                    <br /><strong onClick={() => navigate("/login")} >Login</strong>
+                    {/* <LoginIcon /> */}
                 </span>
             </div>         
             <div className='logoimg' onClick={NavigateHome}>

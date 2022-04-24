@@ -14,7 +14,7 @@ export const Products = () =>
 {
     const [data,setData] = useState([])  
     const [drop,setDrop] = useState('All Products');    
-    const [sortdataname,setSortdataname] = useState("Featured");    
+    const [sortdata,setSortdata] = useState("Featured");    
     const [sdata,setSdata] = useState([]);
     const [count,setCount] = useState(0);
     const [searchdata,setSearchdata] = useState("")
@@ -57,24 +57,23 @@ export const Products = () =>
             setDrop(event.target.value);
             
             if(event.target.value == "All Products")
-            {                
-                setSortdataname("Featured")
+            {
                 return e.category;
             }
             else
             {
-                setSortdataname("Featured")
                 return e.category == event.target.value.toLowerCase();
             }            
         })        
         setData(udata);
+        setSortdata("Featured")
         // setSortdata(udata);        
     };
 
 
     const handleChangesort = (e) => {
-        // setSortdataname(e.target.value);
-        // //console.log(sortdata);        
+        setSortdata(e.target.value);
+        console.log(sortdata);        
         // console.log(data);        
         //  if(sortdataname == "Low to High")
         //  {
@@ -97,6 +96,7 @@ export const Products = () =>
         //         return a.title - b.title;
         //     })   
         //  }
+
     }; 
     
     const addcart = (product) =>
@@ -159,14 +159,10 @@ export const Products = () =>
                         inputProps={{ 'aria-label': 'Without label' }}
                     >
                     <MenuItem value="">
-                        <em>{sortdataname}</em>
-                    </MenuItem>
-                    <MenuItem value={"Featured"}>Featured</MenuItem>
-                    <MenuItem value={"Bestseller"}>Bestseller</MenuItem>
-                    <MenuItem value={"A to Z"}>Name A to Z</MenuItem>
-                    <MenuItem value={"Z to A"}>Name Z to A</MenuItem>
-                    <MenuItem value={"Low to High"}>Price Low to High</MenuItem>
-                    <MenuItem value={"Hight to Low"}>Price High to Low</MenuItem>
+                        <em>{sortdata}</em>
+                    </MenuItem>                                    
+                        <MenuItem value={"Low_to_High"}>Price Low to High</MenuItem>
+                        <MenuItem value={"Hight_to_Low"}>Price High to Low</MenuItem>
                     </Select>                
                 </FormControl>                
             </div>
@@ -180,6 +176,16 @@ export const Products = () =>
                 else
                 {
                     return ele.title.toLowerCase().includes(searchdata.toLowerCase());
+                }
+            }).sort((a,b) => 
+            {
+                if(sortdata == "Low_to_High")
+                {
+                    return a.price - b.price;
+                }
+                else if(sortdata == "Hight_to_Low")
+                {
+                    return b.price - a.price;
                 }
             }).map((product) => (
             <div className='card'>
