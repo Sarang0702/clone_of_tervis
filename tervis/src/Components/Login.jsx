@@ -15,7 +15,11 @@ export const Login = () =>
 
 
     const userdata = JSON.parse(localStorage.getItem("tervisuser"))
+    var userlogin = JSON.parse(localStorage.getItem("tervisuserlogin") || "[]");
+
     console.log(userdata)
+
+    console.log(userlogin)
 
     const loginuser = () =>
     {
@@ -26,6 +30,10 @@ export const Login = () =>
             {
                 alert("login Successfully");
                 c++;   
+
+                userlogin.push(userdata[i]);
+                localStorage.setItem("tervisuserlogin",JSON.stringify(userlogin));
+                
                 navigate("/");
             }
         }  
@@ -49,7 +57,7 @@ export const Login = () =>
                 <button type="submit" >Login</button>
             </form>
             <br />
-            <strong onClick={() => navigate("/signup")}>Signup</strong>
+            <strong onClick={() => navigate("/signup")}>SignUp</strong>
         </div>      
             
         </>

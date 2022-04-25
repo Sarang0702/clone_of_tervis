@@ -7,6 +7,7 @@ import { Footer } from './Components/Footer';
 import { Payment } from './Components/Payment';
 import { Login } from './Components/Login';
 import { Signup } from './Components/Signup';
+import { User } from './Components/User';
 
 
 
@@ -22,7 +23,8 @@ function App() {
             <Route path="/cart" element={<Cart />} />    
             <Route path="/payment" element={<Payment />} />         
             <Route path="/login" element={<Login />} />  
-            <Route path="/signup" element={<Signup />} />         
+            <Route path="/signup" element={<Signup />} />    
+            <Route path="/user" element={< User />} />         
         </Routes>
       </BrowserRouter>
       <br /><br /><br />

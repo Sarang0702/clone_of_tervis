@@ -9,14 +9,41 @@ import LoginIcon from '@mui/icons-material/Login';
 
 export const Nav = (props) =>
 {
-    const navigate = useNavigate();
-    const [data,setData] = useState([]);
-         
+    const navigate = useNavigate();  
+
+    const userlogin =  JSON.parse(localStorage.getItem("tervisuserlogin"))
+   
+    var logind = "Login";
+
+    if(userlogin)
+    {
+        // console.log('Exists');
+        logind = userlogin[0].name
+    }
+    else
+    {
+        // console.log('Not found');        
+        logind = "Login" ;       
+    }    
 
     const NavigateHome = () =>
     {        
         navigate("/");
     } 
+
+
+    const user = () =>
+    {
+        if(userlogin == null)
+        {
+            navigate("/login");
+        }
+        else
+        {     
+            console.log(userlogin[0].name)       
+            navigate("/user");
+        }
+    }
 
 
 
@@ -26,7 +53,7 @@ export const Nav = (props) =>
         <div className="mainnav">   
             <div >         
                 <span className='loginicon'>
-                    <br /><strong onClick={() => navigate("/login")} >Login</strong>
+                    <br /><strong onClick={user} >{logind}</strong>
                     {/* <LoginIcon /> */}
                 </span>
             </div>         

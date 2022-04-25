@@ -9,6 +9,7 @@ export const Signup = () =>
     const [uname,setUame]=useState("")
     const [name,setName]=useState("")
     const [password,setPassword]=useState("")
+    const [mobile,setMobile]=useState("")
     const navigate = useNavigate();    
     
     const Signupuser = () =>
@@ -16,7 +17,8 @@ export const Signup = () =>
         var user = {
             "name":name,
             "uname":uname,
-            "password":password
+            "password":password,
+            "mobile": mobile,
         }
 
         var userdata = JSON.parse(localStorage.getItem("tervisuser") || "[]");
@@ -53,7 +55,7 @@ export const Signup = () =>
             <br /><br />
             <input type={"password"} onChange={(e) => {setPassword(e.target.value)}} placeholder="Password" required/>
             <br /><br />
-            <input type={"tel"} placeholder="Mobile Number" required />
+            <input type={"tel"} placeholder="Mobile Number" onChange={(e) => {setMobile(e.target.value)}} required />
             <br /><br />
             <button type="submit" >Signup</button>
         </form>
