@@ -32,19 +32,28 @@ export const Products = () =>
     
     const { todos} = useSelector((state) => ({
       todos: state.todos,
-    }));
+    })
+    );
 
+    console.log(todos)    
+    
+    // setData(todos);
+    // setSdata(todos);
 
     useEffect(() => {
         showData()
+        // setData(todos);
+        // setSdata(todos);
+        
     },[])
 
     const showData = async() => {
         try{
             dispatch(getDataLoading());
-            const data = await fetch(`https://srngjson.herokuapp.com/products`)
-            .then((d) => d.json());
-            dispatch(getDataSuccess(data));
+            const showdata = await fetch(`https://srngjson.herokuapp.com/products`)
+            .then((d) => d.json());            
+            dispatch(getDataSuccess(showdata));
+            
             //console.log(data);
         } catch (err) {
             dispatch(getDataError(err));
@@ -60,6 +69,8 @@ export const Products = () =>
         setSearchdata(ele);
         console.log(searchdata)
     }
+
+  
 
     
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
@@ -85,23 +96,29 @@ export const Products = () =>
     // console.log(data);
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
     
-    const handleChange = (event) => {
-        const udata = sdata.filter((e) =>
-        {
-            setDrop(event.target.value);
+    const handleChange = (event) => 
+    {
+        setDrop(event.target.value);        
+        // setSdata(todos)        
+        // const udata = sdata.filter((e) =>
+        // {
+        //     setDrop(event.target.value);
             
-            if(event.target.value == "All Products")
-            {
-                return e.category;
-            }
-            else
-            {
-                return e.category == event.target.value.toLowerCase();
-            }            
-        })        
-        setData(udata);
-        setSortdata("Featured")
-        // setSortdata(udata);        
+        //     if(event.target.value == "All Products")
+        //     {
+        //         return e.category;
+        //     }
+        //     else
+        //     {
+        //         return e.category == event.target.value.toLowerCase();
+        //     }            
+        // })        
+        
+        // setData(udata);
+        // setSortdata("Featured")
+        // // setSortdata(udata);       
+        
+        console.log(drop);
     };
 
 
@@ -155,6 +172,7 @@ export const Products = () =>
         // navigate("/cart");
     }
     
+    console.log(data)
 
     return(<>
         <Nav searchd={searchd} />               
@@ -205,19 +223,31 @@ export const Products = () =>
             {todos.filter((ele) => {
                 if(searchdata === "" || searchdata === undefined)
                 {
-                    return todos;
+                    return data;
                 }
                 else
                 {
                     return ele.title.toLowerCase().includes(searchdata.toLowerCase());
                 }
-            }).sort((a,b) => 
+            }).filter((e) =>
             {
-                if(sortdata == "Low_to_High")
+                if(drop == "All Products")
+                {
+                    return e.category;
+                }
+                else
+                 {
+                     return e.category == drop.toLowerCase();
+                 }
+
+            })
+            .sort((a,b) => 
+            {
+                if(sortdata === "Low_to_High")
                 {
                     return a.price - b.price;
                 }
-                else if(sortdata == "Hight_to_Low")
+                else if(sortdata === "Hight_to_Low")
                 {
                     return b.price - a.price;
                 }
