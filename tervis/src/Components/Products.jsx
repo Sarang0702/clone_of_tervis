@@ -6,7 +6,14 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 
+
+import {
+    getDataError,
+    getDataLoading,
+    getDataSuccess,
+} from "../Redux/Action";
 
 
 
@@ -21,6 +28,33 @@ export const Products = () =>
     const navigate = useNavigate();    
 
 
+    const dispatch = useDispatch();
+    
+    const { todos} = useSelector((state) => ({
+      todos: state.todos,
+    }));
+
+
+    useEffect(() => {
+        showData()
+    },[])
+
+    const showData = async() => {
+        try{
+            dispatch(getDataLoading());
+            const data = await fetch(`https://srngjson.herokuapp.com/products`)
+            .then((d) => d.json());
+            dispatch(getDataSuccess(data));
+            //console.log(data);
+        } catch (err) {
+            dispatch(getDataError(err));
+      }
+    }
+
+
+
+
+
     const searchd = (ele) =>
     {
         setSearchdata(ele);
@@ -29,24 +63,24 @@ export const Products = () =>
 
     
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
-    const fetchData = () =>
-    {
-        fetch('https://srngjson.herokuapp.com/products')
-        .then( (res) => res.json())
-        .then( (res) =>
-        {
-            setData(res);
-            setSdata(res);
-            // setSortdata(res);
-        })
-        .catch( (err) => console.log(err))
-    }
-    useEffect(
-        ()=>
-        {
-            fetchData()
-        },[]
-    );
+    // const fetchData = () =>
+    // {
+    //     fetch('https://srngjson.herokuapp.com/products')
+    //     .then( (res) => res.json())
+    //     .then( (res) =>
+    //     {
+    //         setData(res);
+    //         setSdata(res);
+    //         // setSortdata(res);
+    //     })
+    //     .catch( (err) => console.log(err))
+    // }
+    // useEffect(
+    //     ()=>
+    //     {
+    //         fetchData()
+    //     },[]
+    // );
 
     // console.log(data);
     // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
@@ -168,10 +202,10 @@ export const Products = () =>
             </div>
         </div>
         <div className='item-container'>
-            {data.filter((ele) => {
-                if(searchdata == "" || searchdata== undefined)
+            {todos.filter((ele) => {
+                if(searchdata === "" || searchdata === undefined)
                 {
-                    return data;
+                    return todos;
                 }
                 else
                 {
