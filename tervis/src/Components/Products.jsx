@@ -37,13 +37,9 @@ export const Products = () =>
 
     console.log(todos)    
     
-    // setData(todos);
-    // setSdata(todos);
 
     useEffect(() => {
         showData()
-        // setData(todos);
-        // setSdata(todos);
         
     },[])
 
@@ -73,50 +69,10 @@ export const Products = () =>
   
 
     
-    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
-    // const fetchData = () =>
-    // {
-    //     fetch('https://srngjson.herokuapp.com/products')
-    //     .then( (res) => res.json())
-    //     .then( (res) =>
-    //     {
-    //         setData(res);
-    //         setSdata(res);
-    //         // setSortdata(res);
-    //     })
-    //     .catch( (err) => console.log(err))
-    // }
-    // useEffect(
-    //     ()=>
-    //     {
-    //         fetchData()
-    //     },[]
-    // );
-
-    // console.log(data);
-    // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-;
     
     const handleChange = (event) => 
     {
         setDrop(event.target.value);        
-        // setSdata(todos)        
-        // const udata = sdata.filter((e) =>
-        // {
-        //     setDrop(event.target.value);
-            
-        //     if(event.target.value == "All Products")
-        //     {
-        //         return e.category;
-        //     }
-        //     else
-        //     {
-        //         return e.category == event.target.value.toLowerCase();
-        //     }            
-        // })        
-        
-        // setData(udata);
-        // setSortdata("Featured")
-        // // setSortdata(udata);       
         
         console.log(drop);
     };
@@ -125,29 +81,7 @@ export const Products = () =>
     const handleChangesort = (e) => {
         setSortdata(e.target.value);
         console.log(sortdata);        
-        // console.log(data);        
-        //  if(sortdataname == "Low to High")
-        //  {
-        //     data.sort((a,b) =>
-        //     {
-        //         return b.price - a.price;
-        //     })   
-        //  }
-        //  else if(sortdataname == "High to Low")
-        //  {
-        //     data.sort((a,b) =>
-        //     {
-        //         return a.price - b.price;                
-        //     })   
-        //  }
-        //  else if(sortdataname == "Bestseller")
-        //  {
-        //     data.sort((a,b) =>
-        //     {
-        //         return a.title - b.title;
-        //     })   
-        //  }
-
+   
     }; 
     
     const addcart = (product) =>
