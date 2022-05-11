@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 export const Cart = () =>
 {   
     const data = JSON.parse(localStorage.getItem("terviscart"))
-    const [value,setValue] = useState({});    
+    const [value,setValue] = useState(0);    
     const navigate = useNavigate();
 
     var t = 0;
@@ -61,8 +61,12 @@ export const Cart = () =>
                                 </div>
                                 <hr />
                             </td>
-                            <td><input type={"text"} value={"1"} /> </td>
-                            <td>{"Rs."+product.price}</td>
+                            <td><input type={"Number"}  min={1} max={5} defaultValue={1} onChange={(e) => 
+                            {
+                                setValue(e.target.value)
+                            }} /> </td>
+                            {/* <td>{`Rs. ${value}`}</td> */}
+                            <td>{`Rs. ${product.price}`}</td>
                         </tr>
                     ))}
                 </table>
