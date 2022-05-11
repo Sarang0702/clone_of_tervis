@@ -22,10 +22,7 @@ export const Products = () =>
     const [data,setData] = useState([])  
     const [drop,setDrop] = useState('All Products');    
     const [sortdata,setSortdata] = useState("Featured");    
-    const [sdata,setSdata] = useState([]);
-    const [count,setCount] = useState(0);
     const [searchdata,setSearchdata] = useState("")
-    const navigate = useNavigate();    
 
 
     const dispatch = useDispatch();
