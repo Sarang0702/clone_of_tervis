@@ -63,10 +63,11 @@ export const Cart = () =>
                             </td>
                             <td><input type={"Number"}  min={1} max={5} defaultValue={1} onChange={(e) => 
                             {
-                                setValue(e.target.value)
+                                setValue(e.target.value);
+                                console.log(e.target.value);
                             }} /> </td>
-                            {/* <td>{`Rs. ${value}`}</td> */}
                             <td>{`Rs. ${product.price}`}</td>
+                            {/* <td>{`Rs. ${(() => product.price*value)()}`}</td> */}
                         </tr>
                     ))}
                 </table>
