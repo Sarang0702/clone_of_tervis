@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import '../Css/cart.css';
 import { Nav } from "./Nav";
 import Button from '@mui/material/Button';
@@ -9,21 +9,18 @@ import { useNavigate } from 'react-router-dom';
 
 export const Cart = () =>
 {   
-    const data = JSON.parse(localStorage.getItem("terviscart"))
-    const [value,setValue] = useState(0);    
+    var data = JSON.parse(localStorage.getItem("terviscart"));    
+    const [value,setValue] = useState({})
     const navigate = useNavigate();
 
     var t = 0;
-    data.forEach((el) => t += el.price)
-    console.log(data);
+    data.forEach((el) => t += el.price)    
     const delcart = (product) =>
     {
         data.splice(data.findIndex(a => a.id === product.id) , 1)        
         localStorage.setItem("terviscart",JSON.stringify(data));     
-
         setValue({"msg":"just refresh page"});
     }    
-
     
     var mt = 0;
     if(t != 0)
@@ -32,12 +29,26 @@ export const Cart = () =>
         mt = mt.toFixed(2)
     }
 
+    const handleProductData = (p,e) =>
+    {
+        data.forEach((ele) =>
+        {
+            if(ele.id === p.id)
+            {
+                ele.price = p.price*e;                           
+            }            
+        })         
+        data = data
+        localStorage.setItem("terviscart",JSON.stringify(data));     
+        setValue({"msg":"just refresh page and quantity changed"});
+    }
+
     console.log(data);
 
     return(
     <>
         <Nav />
-       
+        {/* {"-----------------------------------------------"} */}
         <div className='maincart'>     
             <div className='small-container'>
                 <table>
@@ -46,8 +57,8 @@ export const Cart = () =>
                         <th className='cartheading'>Quantity</th>
                         <th className='cartheading'>Subtotal</th>
                     </tr>
-                    {data.map((product) => (        
-                        <tr>
+                    {data.map((product,k) => (        
+                        <tr key={k}>
                             <td>
                                 <div className="cart-info">
                                     <img src={product.image} />
@@ -63,20 +74,17 @@ export const Cart = () =>
                             </td>
                             <td><input type={"Number"}  min={1} max={5} defaultValue={1} onChange={(e) => 
                             {
-                                setValue(e.target.value);
-                                console.log("value"+value);
+                                handleProductData(product,e.target.value)
                             }} /> </td>
-                            <td>{`Rs. ${"product price"+product.price}`}</td>
-                            <td>{`Rs. ${(() => product.price*value)()}`}</td>
+                            <td>{`Rs. ${product.price}`}</td>                            
                         </tr>
                     ))}
                 </table>
                 <div className='total-price'>
                         <table>
                             <tr>
-                                <td>Subtotal</td>
-                                   
-                                <td>{"Rs. "+t*value}</td>
+                                <td>Subtotal</td>                                                                   
+                                <td>{`Rs. ${t*value}`}</td>
                             </tr>
                             <tr>
                                 <td>Tax</td>

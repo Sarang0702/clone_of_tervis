@@ -2,8 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Css/Nav.css'
 import { Navbar } from './Navbar';
-import { useEffect, useState } from "react";
-import LoginIcon from '@mui/icons-material/Login';
 
 
 

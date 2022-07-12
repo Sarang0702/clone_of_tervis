@@ -18,7 +18,7 @@ import {
 
 export const Products = () =>
 {
-    const [data,setData] = useState([])  
+    const [data, setData] = useState([]);
     const [drop,setDrop] = useState('All Products');    
     const [sortdata,setSortdata] = useState("Featured");    
     const [searchdata,setSearchdata] = useState("")
@@ -45,39 +45,25 @@ export const Products = () =>
             const showdata = await fetch(`https://srngjson.herokuapp.com/products`)
             .then((d) => d.json());            
             dispatch(getDataSuccess(showdata));
-            
-            //console.log(data);
         } catch (err) {
             dispatch(getDataError(err));
       }
     }
-
-
-
-
-
+    
     const searchd = (ele) =>
     {
         setSearchdata(ele);
-        console.log(searchdata)
     }
 
-  
-
-    
-    
     const handleChange = (event) => 
     {
         setDrop(event.target.value);        
-        
-        console.log(drop);
     };
 
 
-    const handleChangesort = (e) => {
+    const handleChangesort = (e) => 
+    {
         setSortdata(e.target.value);
-        console.log(sortdata);        
-   
     }; 
     
     const addcart = (product) =>
@@ -86,23 +72,19 @@ export const Products = () =>
         var c = 0;
         for(var i=0;i<cartdata.length;i++)
         {
-            if(product.id == cartdata[i].id)
+            if(product.id === cartdata[i].id)
             {
                 alert("Product is already in cart");
                 c++;
             }
         }
-        if(c == 0)
+        if(c === 0)
         {
             cartdata.push(product);
             localStorage.setItem("terviscart",JSON.stringify(cartdata));
             alert("Product Added in Cart...")
         }
-              
-        // navigate("/cart");
     }
-    
-    console.log(data)
 
     return(<>
         <Nav searchd={searchd} />               
@@ -161,7 +143,7 @@ export const Products = () =>
                 }
             }).filter((e) =>
             {
-                if(drop == "All Products")
+                if(drop === "All Products")
                 {
                     return e.category;
                 }
@@ -187,7 +169,7 @@ export const Products = () =>
                 <h3>{product.title}</h3>
                 <p><strong>{"Rs  " + product.price}</strong></p>
                 <Button variant="outlined" size="small" onClick={() => addcart(product)}>
-                Add To Cart
+                       Add To Cart
                 </Button>
             </div>          
             ))}
