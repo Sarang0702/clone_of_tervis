@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import '../Css/cart.css';
 import { Nav } from "./Nav";
 import Button from '@mui/material/Button';
@@ -10,15 +10,18 @@ import { useNavigate } from 'react-router-dom';
 export const Cart = () =>
 {   
     var data = JSON.parse(localStorage.getItem("terviscart"));    
+    
+    const udata = useRef(data);
     const [value,setValue] = useState({})
     const navigate = useNavigate();
 
     var t = 0;
-    data.forEach((el) => t += el.price)    
+    udata.current.forEach((el) => t += el.price);    
     const delcart = (product) =>
     {
         data.splice(data.findIndex(a => a.id === product.id) , 1)        
         localStorage.setItem("terviscart",JSON.stringify(data));     
+        udata.current = data;
         setValue({"msg":"just refresh page"});
     }    
     
@@ -27,23 +30,30 @@ export const Cart = () =>
     {
         mt = 35+t
         mt = mt.toFixed(2)
+        var st = mt-35;
     }
 
-    const handleProductData = (p,e) =>
+    const handleProductQuantity = (p,e) =>
     {
-        data.forEach((ele) =>
+        let q 
+        data.forEach((ele) => 
+            {
+                if(ele.id === p.id)                
+                {
+                    q = ele.price
+            }})
+
+        udata.current.forEach((ele) =>
         {
             if(ele.id === p.id)
             {
-                ele.price = p.price*e;                           
+                ele.price = q*e;                                           
             }            
-        })         
-        data = data
-        localStorage.setItem("terviscart",JSON.stringify(data));     
-        setValue({"msg":"just refresh page and quantity changed"});
+        })                 
+        setValue({"msg":"just refresh page and quantity changed"});   
     }
 
-    console.log(data);
+    console.log(udata.current);
 
     return(
     <>
@@ -57,7 +67,7 @@ export const Cart = () =>
                         <th className='cartheading'>Quantity</th>
                         <th className='cartheading'>Subtotal</th>
                     </tr>
-                    {data.map((product,k) => (        
+                    {udata.current.map((product,k) => (        
                         <tr key={k}>
                             <td>
                                 <div className="cart-info">
@@ -74,7 +84,7 @@ export const Cart = () =>
                             </td>
                             <td><input type={"Number"}  min={1} max={5} defaultValue={1} onChange={(e) => 
                             {
-                                handleProductData(product,e.target.value)
+                                handleProductQuantity(product,e.target.value)
                             }} /> </td>
                             <td>{`Rs. ${product.price}`}</td>                            
                         </tr>
@@ -84,7 +94,7 @@ export const Cart = () =>
                         <table>
                             <tr>
                                 <td>Subtotal</td>                                                                   
-                                <td>{`Rs. ${t*value}`}</td>
+                                <td>{`Rs. ${st.toFixed(2)}`}</td>
                             </tr>
                             <tr>
                                 <td>Tax</td>
